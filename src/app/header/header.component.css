@@ -1,0 +1,159 @@
+.main-header{
+  position: relative;
+  height: 56px;
+  display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    flex-flow: row nowrap;
+
+}
+
+.main-header-category{
+  background-color: #fff;
+  color: #1f1f1f;
+}
+
+.main-header-lg{
+  position: relative;
+  height: 60px;
+  display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    flex-flow: row nowrap;
+    background-color: #fff;
+    padding: 0.5rem 1rem;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+}
+
+li{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-header-option{
+  color: #c6d4df!important;
+  margin-left: 0;
+  width: 24px;
+  margin: 0 8px;
+  align-items: center;
+  display:flex;
+  justify-content: center;
+}
+
+.row {
+  margin-right: -8px;
+  margin-left: -8px;
+}
+
+.col{
+
+  padding-left: 8px;
+}
+
+.main-header-logo{
+  max-width: 127px;
+  min-width: 115px;
+  padding: 0;
+  align-items: center;
+  display: flex;
+}
+
+
+@media only screen and (max-width: 1000px) {
+  .auto-md {
+    width: auto;
+    display: block;
+  }
+}
+
+.option{
+  z-index: 2;
+}
+
+
+.abrir-modal{
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+}
+
+.nav-movil{
+  color: #737373;
+  cursor: pointer;
+}
+
+.nav-link{
+  color: #7f7f7f!important;
+  cursor: pointer;
+  font-size: .875rem!important;
+  font-style: normal!important;
+    font-weight: 600!important;
+    line-height: 100%!important;
+}
+
+
+
+.nav-link:hover{
+  background-color: #f2f2f2;
+  transition: 0.5s;
+}
+.nav-item{
+  background: none;
+}
+
+.loader-container{
+  position: fixed;
+  width: 100%;
+  z-index: 99;
+}
+
+
+.main-categories{
+  z-index: 2;
+  top: 63px;
+  box-shadow: 0px 5px 5px rgba(0,0,0,0.2);
+}
+
+
+.btn-vender{
+  padding: .15rem .9rem;
+  border-radius: .25rem;
+  background: linear-gradient( to bottom, #a4d007 5%, #536904 95%);
+  color:#D2E885;
+  font-size: 1rem;
+  font-weight: 400;
+  border: none;
+}
+
+.btn-vender:hover{
+  background: linear-gradient( to bottom, #a4d007 30%, #536904 95%);
+  color: #fff;
+}
+
+header{
+  position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #171a21;
+    z-index: 10;
+}
+
+.banner{
+  position: relative;
+  height: 30px;
+}
+
+
+
+.scroll-header{
+  animation-name: slideOutUp;
+}

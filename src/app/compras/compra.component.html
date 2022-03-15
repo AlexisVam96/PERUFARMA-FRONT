@@ -1,0 +1,51 @@
+<app-header></app-header>
+
+
+<section class="mt-4 container">
+  <div class="card col-sm-10" style="margin: 0;">
+
+      <table class="table  text-white">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>DATOS</th>
+            <th>DNI</th>
+            <th>MOVIL</th>
+            <th>DIRECCION</th>
+            <th>FECHA</th>
+            <th>TOTAL</th>
+            <th>ACCION</th>
+            <th>ELIMINAR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let compra of compras">
+            <th scope="row">C000{{compra.id}}</th>
+            <td>{{compra.nombre}} {{compra.apellido}}</td>
+            <td>{{compra.dni}}</td>
+            <td>{{compra.movil}}</td>
+            <td>{{compra.direccion}}</td>
+            <td>{{compra.fecha}}</td>
+            <td>S/ {{compra.total}}.00</td>
+            <td>
+              <button type="button" class="btn btn-link" [routerLink]="['/compras',compra.id]"  >
+              detalle
+              </button>
+            </td>
+            <td>
+              <button type="button" class="btn btn-link" style="color: red;" (click)="delete(compra)"  >
+                eliminar
+                </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+  </div>
+
+
+</section>
+
+
+
+

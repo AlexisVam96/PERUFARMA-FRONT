@@ -1,0 +1,33 @@
+
+:root {
+  --swiper-theme-color: #262626;
+  --swiper-navigation-size: none;
+}
+
+
+.label-black-2 {
+  font-size: 1.265625rem!important;
+  font-style: normal!important;
+  font-weight: 700!important;
+  line-height: 100%!important;
+}
+
+
+.bread-crumb{
+  display: inline-flex;
+
+    flex-wrap: nowrap;
+    line-height: 140%!important;
+}
+
+.label-crumb{
+  font-weight: 300;
+}
+
+.objetfit > img{
+	width: 100%;
+	height: 200px;
+	object-fit: cover;
+	background-color: rgba(0, 0, 0, 0.788);
+
+}
