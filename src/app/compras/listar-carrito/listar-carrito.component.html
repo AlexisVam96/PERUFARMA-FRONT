@@ -2,8 +2,8 @@
   <div class="col-sm-5 col-12 ">
     <div class="row" [routerLink]="['/producto',item.producto.nombre]" style="cursor: pointer;">
       <div class="col-3 px-2 d-flex">
-        <div class="m-auto d-flex align-items-center justify-content-center" style="width: 72px; height: 72px;">
-          <img class="img-fluid" *ngIf="item.producto?.imagen" src="http://localhost:8084/api/uploads/img/{{item.producto.imagen}}">
+        <div class="m-auto d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+          <img class="img-fluid" *ngIf="item.producto?.imagen" src="{{urlBackend}}/api/uploads/img/{{item.producto.imagen}}">
           <img class="img-fluid" *ngIf="!item.producto?.imagen" src="{{urlBackend}}/images/not-image-cuadrado.png" >
         </div>
      </div>

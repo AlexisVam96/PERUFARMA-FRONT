@@ -37,7 +37,7 @@
             No hay registro en la base de datos!
           </div>
 
-          <table class="table text-white">
+          <table class="table text-dark">
             <thead>
               <th>nombre</th>
               <th>acciones</th>
@@ -46,8 +46,8 @@
               <tr *ngFor="let categoria of categorias">
                 <td>{{categoria.nombre}}</td>
                 <td>
-                  <button type="button" name="button" [routerLink]="['/categorias/form', categoria.id]" class="mx-1 btn btn-warning" style="border-radius:50%;"><i class="far fa-edit"></i></button>
-                  <button type="button" name="button" (click)="delete(categoria)" class=" mx-1 btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                  <button type="button" name="button" [routerLink]="['/categorias/form', categoria.id]" class="mx-1 btn btm-sm btn-warning" style="border-radius:50%;"><i class="far fa-edit"></i></button>
+                  <button type="button" name="button" (click)="delete(categoria)" class=" mx-1 btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
                 </td>
               </tr>
             </tbody>

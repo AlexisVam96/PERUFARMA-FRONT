@@ -33,7 +33,7 @@
 .heading--1{
   font-size: .88875rem!important;
   font-style: normal!important;
-  font-weight: 700!important;
+  font-weight: 600!important;
   line-height: 120%!important;
 }
 
@@ -42,15 +42,20 @@
 }
 
 .heading--3{
-  font-size: 1.12375rem!important;
+  font-size: 1.22375rem!important;
   font-style: normal!important;
   font-weight: 500!important;
   line-height: 120%!important;
 }
 
 .label--5{
-  font-size: 1.101875rem!important;
+  font-size: 1.301875rem!important;
     font-style: normal!important;
     font-weight: 400!important;
     line-height: 100%!important;
+}
+
+.img-detalle:hover{
+  opacity: .2;
+  background: rgba(0, 0, 0, 0.5);
 }

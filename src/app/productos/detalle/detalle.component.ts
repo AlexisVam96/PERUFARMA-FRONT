@@ -17,7 +17,7 @@ import { CarritoService } from 'src/app/compras/carrito.service';
 export class DetalleComponent implements OnInit {
 
   @Input() producto: Producto
-  productos: Producto[]
+
 
   titulo: string = "Detalle del producto"
   public fotoSeleccionada: File
@@ -26,22 +26,9 @@ export class DetalleComponent implements OnInit {
 
   constructor(private productoService: ProductoService,
     public modalService: ModalService,
-    public authService: AuthService,
-    private carritoService: CarritoService) { }
+    public authService: AuthService) { }
 
   ngOnInit(): void {
-    if(this.producto){
-      console.log('detalle.component: ',this.producto.categoria.nombre)
-    this.productoService.getProductosPorCategoria(this.producto.categoria.nombre).subscribe(
-      productos => {
-        this.productos = productos;
-        console.log(`detalle.component: `,this.productos);
-      }
-    )
-    }else{
-      console.log('no existe producto')
-    }
-
   }
 
   seleccionarFoto(event){
@@ -80,9 +67,6 @@ export class DetalleComponent implements OnInit {
 
   }
 
-  goToCar(producto: Producto){
-    this.carritoService.addToList(producto)
-  }
 
   cerrarModal(){
     this.modalService.cerrarModal();

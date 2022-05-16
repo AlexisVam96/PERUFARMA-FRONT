@@ -2,9 +2,9 @@
 
 
 <section class="mt-4 container">
-  <div class="card col-sm-10" style="margin: 0;">
+  <div class="card col-sm-10 m-auto">
 
-      <table class="table  text-white">
+      <table class="table  text-dark ">
         <thead>
           <tr>
             <th>#</th>
@@ -26,7 +26,7 @@
             <td>{{compra.movil}}</td>
             <td>{{compra.direccion}}</td>
             <td>{{compra.fecha}}</td>
-            <td>S/ {{compra.total}}.00</td>
+            <td>{{compra.total | currency : 'S/'}}</td>
             <td>
               <button type="button" class="btn btn-link" [routerLink]="['/compras',compra.id]"  >
               detalle

@@ -1,11 +1,12 @@
 <app-header  ></app-header>
 
 <section class="container mt-4">
-    <div class="col-sm-8">
+    <div class="col-sm-8 m-auto">
       <div class="card card-body" *ngIf="compra">
+        
+    
 
-
-        <table class="table  text-white">
+        <table class="table  text-dark">
           <thead>
             <tr>
               <th >#</th>
@@ -19,17 +20,27 @@
             <tr *ngFor="let itemm of compra.items">
               <th >{{itemm.id}}</th>
               <td>
-                <img src="http://localhost:8084/api/uploads/img/{{itemm.producto.imagen}}" width="70" height="70" class="img-fluid" alt="">
-                {{itemm.producto.nombre}}</td>
-              <td>S/{{itemm.producto.precio}}.00</td>
+                <div class="row">
+                  <div class="col-3">
+                    <img *ngIf="itemm.producto?.imagen" src="{{urlBackend}}/api/uploads/img/{{itemm.producto.imagen}}" 
+                    width="50" height="50"  alt="">
+                    <img  *ngIf="!itemm.producto?.imagen"  height="50" width="50"
+                    src="{{urlBackend}}/images/not-image-cuadrado.png" alt="sin imagen" >
+                  </div>
+                  <div class="col-9">
+                    {{itemm.producto.nombre}}
+                  </div>
+                </div>
+              </td>
+              <td>{{itemm.producto.precio |currency: 'S/'}}</td>
               <td>{{itemm.cantidad}}</td>
-              <td>S/{{itemm.importe}}.00</td>
+              <td>{{itemm.importe |currency: 'S/'}}</td>
             </tr>
           </tbody>
         </table>
 
         <div class=" d-flex justify-content-end mr-2">
-          <span class="btn-success btn">TOTAL: {{total |currency: 'S/'}}</span>
+          <span class="btn-success btn">TOTAL : {{total |currency: 'S/'}}</span>
         </div>
 
 

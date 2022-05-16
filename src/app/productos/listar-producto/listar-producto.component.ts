@@ -19,6 +19,7 @@ export class ListarProductoComponent implements OnInit {
 
   @Input() productos: Producto[];
   urlBackend: string = URL_BACKEND;
+  menu: boolean = false
 
 
   productoSeleccionado: Producto;
@@ -37,8 +38,8 @@ export class ListarProductoComponent implements OnInit {
       clickable: true
     },
     breakpoints: {
-      1500: {
-        slidesPerView: 4,
+      1200: {
+        slidesPerView: 5,
         spaceBetween: 0,
       },
       1000: {
@@ -62,6 +63,10 @@ export class ListarProductoComponent implements OnInit {
         spaceBetween: 0
       }
     }
+  }
+
+  abrirMenu(){
+    this.menu= true;
   }
 
   abrirModal(producto: Producto){

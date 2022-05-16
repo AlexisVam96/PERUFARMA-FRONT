@@ -4,6 +4,7 @@ import {Compra} from '../models/compra'
 import { ActivatedRoute} from '@angular/router'
 import { ComprasService} from '../services/compras.service'
 import { CarritoService } from '../carrito.service';
+import { URL_BACKEND } from 'src/app/config/config';
 
 @Component({
   selector: 'app-item',
@@ -13,6 +14,8 @@ import { CarritoService } from '../carrito.service';
 export class ItemComponent implements OnInit {
 
   @Input() compra: Compra
+
+  urlBackend: string = URL_BACKEND;
 
   constructor(public itemService: ItemService,
     private activatedRoute: ActivatedRoute,

@@ -12,7 +12,7 @@
     </div>
 
     <div class="card col-sm-12">
-      <table class="table  mt-5 text-white" *ngIf="usuario.compras.length > 0">
+      <table class="table  mt-5 text-dark" *ngIf="usuario.compras.length > 0">
         <thead>
           <tr>
             <th>#</th>
@@ -34,7 +34,7 @@
             <td>{{compra.movil}}</td>
             <td>{{compra.direccion}}</td>
             <td>{{compra.fecha}}</td>
-            <td>S/ {{compra.total}}.00</td>
+            <td>{{compra.total | currency : 'S/'}}</td>
             <td>
               <button type="button" class="btn btn-link" [routerLink]="['/compras',compra.id]"  >
               detalle

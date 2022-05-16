@@ -68,6 +68,7 @@ import { SaveProductComponent } from './productos/save-product/save-product.comp
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { NgxStripeModule } from 'ngx-stripe';
 import { ProductosUsuariosComponent } from './productos/productos-usuarios/productos-usuarios.component';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 
@@ -158,6 +159,7 @@ const routes: Routes = [
     MatToolbarModule,
     MatButtonModule,
     MatListModule,
+    MatMenuModule,
     NgxDropzoneModule,
     ReactiveFormsModule,
     NgxStripeModule.forRoot('pk_test_51JVKQZLxrHzzhEPxCqdeoG77DA2cCpta5fS66V0FGZ66neDHS87AgiG1OGKUsoFaaSQWLdXleNHWfoRNGWPn4hxe00S0eu45Cu'),

@@ -1,9 +1,9 @@
 <div class="abrir-modal animacion fadeIn" *ngIf="modalService.modal"  >
   <div  class="modal" tabindex="-1" role="dialog" style="display: block; overflow-y: auto;">
-    <div class="modal-dialog modal-xl" role="document">
-      <div class="modal-content text-white" style="background:#1b2838!important ; top:50px; box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.3);">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content text-white" style="top:50px; box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.3);">
         <div class="modal-header">
-          <div class="modal-title" style="font-size: 1rem; text-transform: uppercase;">{{titulo}}</div>
+          <div class="modal-title text-dark" style="font-size: 1.15rem;">{{titulo}}</div>
           <button (click)="cerrarModal()" type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -11,38 +11,44 @@
         <div class="modal-body" style="min-height: 70%;">
           <div class="row mb-3">
             <div class="col-sm text-center">
-              <img *ngIf="!producto?.imagen" src="{{urlBackend}}/images/not-available.png" alt="producto.imagen" class="rounded " >
-              <img *ngIf="producto?.imagen" src="{{urlBackend}}/api/uploads/img/{{producto.imagen}}" alt="producto.imagen" class="rounded img-fluid" >
+              
+              <img *ngIf="!producto?.imagen" src="{{urlBackend}}/images/not-image-cuadrado.png" 
+              alt="producto.imagen" class="rounded " width="250" height="250" >
+              <img *ngIf="producto?.imagen" src="{{urlBackend}}/api/uploads/img/{{producto.imagen}}" 
+              alt="producto.imagen" class="rounded img-fluid " width="250" height="250">
+            
               <div *ngIf="progreso > 0" class="progress">
-                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width: progreso+'%'}">{{progreso}}%</div>
+              <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" 
+              aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width: progreso+'%'}">{{progreso}}%</div>
               </div>
+              
               <div class="input-group mt-3" *ngIf="authService.hasrole('ROLE_ADMIN')" >
                 <div class="custom-file">
-                  <input  (change)="seleccionarFoto($event)" type="file"  >
+                  <input class="file"  (change)="seleccionarFoto($event)" type="file"  >
                 </div>
                 <div class="input-group-append">
-                  <button (click)="subirFoto()" [disabled]="!fotoSeleccionada" class="btn btn-info btn-sm" type="button" id="inputGroupFileAddon04">Subir</button>
+                  <button (click)="subirFoto()" [disabled]="!fotoSeleccionada" class="btn btn-success px-3 " type="button" id="inputGroupFileAddon04">Subir</button>
                 </div>
               </div>
             </div>
             <div class="col-sm ">
-                <ul *ngIf="producto" class=" h-100">
+                <div *ngIf="producto" class=" h-100">
                   <div class="product-presentation heading--1 mt-3">
                     {{producto.descripcion}}
                   </div>
-                  <div class="heading--3 ">{{producto.nombre}}</div>
-                  <div class="heading--3 mb-2">{{producto.categoria.nombre}}</div>
-                  <div class="label--5 text-info" >{{producto.precio | currency : 'S/'}}</div>
-                  <div class="my-2">{{producto.stock}} unidades</div>
+                  <div class="heading--3 text-dark">{{producto.nombre}}</div>
+                  <div class="heading--3 mb-2 text-dark">{{producto.categoria.nombre}}</div>
+                  <div class="label--5 text-dark" >{{producto.precio | currency : 'S/'}}</div>
+                  <div class="my-2 text-dark">{{producto.stock}} unidades</div>
                   <div class="d-flex mt-3 justify-content-center text-info">
                     <i style="font-size: 2rem;" class="far fa-check-circle"></i>
                   </div>
-                  <div class="d-flex justify-content-center text-info"  style="font-weight: 300;">verify for E-truegame</div>
-                </ul>
+                  <div class="d-flex justify-content-center text-info"  style="font-weight: 300;">verify for Perufarma</div>
+                </div>
             </div>
           </div>
           <div class="col">
-            <div class="my-2">Más roductos de {{this.producto.categoria.nombre}}</div>
+            
             <app-listar-producto [productos]="productos"></app-listar-producto>
           </div>
         </div>

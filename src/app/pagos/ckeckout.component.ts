@@ -37,7 +37,7 @@ export class CkeckoutComponent implements OnInit , AfterViewChecked{
   //@ViewChild('paypal', { static: true }) paypalElement: ElementRef;
 
   compra: Compra = new Compra();
-  check: boolean = false
+  check: boolean = true
   checkPaypal: boolean = false;
   panelOpenState = false;
   urlBackend: string = URL_BACKEND
@@ -167,7 +167,7 @@ export class CkeckoutComponent implements OnInit , AfterViewChecked{
 
     swalWithBootstrapButtons.fire({
       title: 'Confirme el pago?',
-      text: `¿Desea confirmar el pago de S/${this.subtotal}.00 en etruegame`,
+      text: `¿Desea confirmar el pago de ${this.subtotal.toLocaleString('en-US', { style: 'currency', currency: 'PEN' })} en etruegame`,
       icon: 'info',
       showCancelButton: true,
       confirmButtonText: 'Si, Confirmar!',

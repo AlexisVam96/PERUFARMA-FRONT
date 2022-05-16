@@ -24,7 +24,7 @@
             </div>
           </div>
           <div class="col main-header-logo ">
-            <a class="navbar-brand text-muted d-flex align-items-center justify-content-center" style=" font-weight: bolder; font-size: medium;" routerLink="/productos">
+            <a class="navbar-brand d-flex align-items-center justify-content-center text-dark" style=" font-weight: bolder; font-size: medium;" routerLink="/productos">
               <img src="../../favicon.ico" alt="favicon" width="30" height="30"> {{titulo}}</a>
           </div>
           <div class="col d-flex align-items-center justify-content-end" >
@@ -49,12 +49,17 @@
           <div class="col d-flex">
             <div class="row">
               <div class="col">
-                <a class="navbar-brand text-muted d-flex align-items-center" style=" font-weight: bolder; font-size: x-large;" routerLink="/productos">
-                  <img class="img-fluid" src="../../favicon.ico" alt="favicon" width="30" height="30" > {{titulo}}</a>
+                <a class="navbar-brand d-flex align-items-center title "  routerLink="/productos">
+                  <img class="img-fluid px-1" src="../../favicon.ico" alt="favicon" width="27" height="27" > {{titulo}}</a>
               </div>
-              <div class="col d-flex align-items-center">
+              <div class="col d-flex align-items-center" *ngIf="!carritoService.existeDireccion(); else noDireccion">
                 <a class="nav-link "  (click)="openDialogMaps()"><i class="fas fa-map-marker-alt"></i> Ingrese tu dirección</a>
               </div>
+              <ng-template  #noDireccion >
+                <div class="col d-flex align-items-center "  >
+                  <a class="nav-link "  (click)="openDialogMaps()"><i class="fas fa-map-marker-alt"></i> {{carritoService.ubicacion}}</a>
+                </div>
+              </ng-template>
             </div>
           </div>
           <div class="col">
@@ -68,8 +73,28 @@
                   <span class="pl-3">Mi Carrito</span>
                 </a>
               </div>
-              <div class="col p-0 d-flex align-items-center">
+              <div *ngIf="!authService.isAuthenticated()" class="col p-0 d-flex align-items-center">
                 <a (click)="abrirModalLogin()" class="nav-link"><i class="far fa-user"></i> Iniciar sesión</a>
+              </div>
+            
+              <div *ngIf="authService.isAuthenticated()" class="dropdown nav-item d-flex align-items-center">
+                <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {{authService.usuario.nombre}} {{authService.usuario.apellido}}
+                </a>
+    
+                <div class="dropdown-menu dropdown-menu-right" style="z-index: 2;" aria-labelledby="dropdownMenuLink">
+                  <button data-toggle="collapse" *ngIf="authService.hasrole('ROLE_USER')" data-target="#navbarSupportedContent"  [routerLink]="['/mis-compras',authService.usuario.username]" class="dropdown-item" type="submit">
+                    <i class="fas fa-shopping-bag"></i>&nbsp;  Mis compras
+                  </button>
+                  <div class="dropdown-divider " *ngIf="authService.hasrole('ROLE_ADMIN')"></div>
+                  <button data-toggle="collapse" *ngIf="authService.hasrole('ROLE_ADMIN')" data-target="#navbarSupportedContent"  [routerLink]="['/compras']" class="dropdown-item" type="submit">
+                    <i class="fas fa-shopping-bag"></i>&nbsp;  Ventas
+                  </button>
+                  <div class="dropdown-divider "></div>
+                  <button data-toggle="collapse" data-target="#navbarSupportedContent"  (click)="logout()" class="dropdown-item" type="submit">
+                    <i class="fas fa-sign-out-alt"></i>&nbsp;  Cerrar sesión
+                  </button>
+                </div>
               </div>
             </div>
 

@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit {
 
   @Input() car:boolean = true;
 
-  titulo: string = "ETRUEGAME"
+  titulo: string = "PERUFARMA"
   categorias : Categoria[]
 
 

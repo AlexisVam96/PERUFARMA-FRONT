@@ -15,3 +15,11 @@
 
   }
 }
+
+
+.main-title{
+  font-size: 1.345625rem;
+  display: inline-block;
+  font-weight: 600;
+  padding-right: 30px;
+}
