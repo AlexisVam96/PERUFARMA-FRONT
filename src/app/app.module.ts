@@ -69,7 +69,11 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
 import { NgxStripeModule } from 'ngx-stripe';
 import { ProductosUsuariosComponent } from './productos/productos-usuarios/productos-usuarios.component';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatSelectModule} from '@angular/material/select';
 
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
+import { PaymentComponent } from './payment/payment.component';
 
 
 const routes: Routes = [
@@ -92,6 +96,7 @@ const routes: Routes = [
   {path: 'producto/:nombre', component: ProductoComponent},
   {path: 'categoria/:nombre', component: ProductComponent},
   {path: 'registro', component: RegistroComponent},
+  {path: 'payment', component: PaymentComponent},
   {path: 'mis-compras/:user', component: ComprasComponent, canActivate:[AuthGuard, RoleGuard], data: {role: 'ROLE_USER'}}
 ];
 
@@ -123,11 +128,13 @@ const routes: Routes = [
     ButtonItemCantidadComponent,
     ListarProductoComponent,
     SaveProductComponent,
-    ProductosUsuariosComponent
+    ProductosUsuariosComponent,
+    PaymentComponent
   ],
   entryComponents: [
     MapsComponent,
-    LoginComponent
+    LoginComponent,
+    PaymentComponent
   ],
   imports: [
     CommonModule,
@@ -148,6 +155,8 @@ const routes: Routes = [
     MatDialogModule,
     MatSidenavModule,
     MatExpansionModule,
+    MatCardModule,
+    MatDividerModule,
     MatSnackBarModule,
     GooglePlaceModule,
     SwiperModule,
@@ -162,6 +171,7 @@ const routes: Routes = [
     MatMenuModule,
     NgxDropzoneModule,
     ReactiveFormsModule,
+    MatSelectModule,
     NgxStripeModule.forRoot('pk_test_51JVKQZLxrHzzhEPxCqdeoG77DA2cCpta5fS66V0FGZ66neDHS87AgiG1OGKUsoFaaSQWLdXleNHWfoRNGWPn4hxe00S0eu45Cu'),
   ],
   providers: [

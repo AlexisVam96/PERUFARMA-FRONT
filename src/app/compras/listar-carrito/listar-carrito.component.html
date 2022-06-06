@@ -15,7 +15,11 @@
 
   </div>
   <div class="col-sm-1 col-6 px-2 display-center text-car">
-    <span class="text-car d-none d-md-block">{{item.producto.precio | currency : 'S/'}}</span>
+
+    <select matNativeControl [compareWith]="comprararPresentacion" required name="presentacion" class="input"  [(ngModel)]="item.producto.presentaciones" >
+      <option *ngFor="let presentacion of item.producto.presentaciones" [ngValue]="presentacion">{{presentacion.nombre}}</option>
+    </select>
+
   </div>
   <div class="col-sm-2 col-6 px-2 display-center ">
     <app-button-item-cantidad [producto]="item.producto"></app-button-item-cantidad>

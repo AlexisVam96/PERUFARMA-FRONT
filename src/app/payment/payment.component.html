@@ -1,17 +1,59 @@
-<div class="modal-header">
-  <h5 class="modal-title">¿Deseas confirmar el pago?</h5>
-  <button type="button" class="close" aria-label="Close" >
-      <span aria-hidden="true">&times;</span>
-  </button>
-</div>
-<div class="modal-body">
-  <h5>Datos del pago:</h5>
-  <p><b>ID:</b> {{id}}</p>
-  <p><b>Nombre:</b> {{nombre}}</p>
-  <p><b>Descripción:</b> {{descripcion}}</p>
-  <p><b>Precio:</b>S/ {{precio}}</p>
-</div>
-<div class="modal-footer d-flex justify-content-between">
-  <button type="button" class="btn btn-success" (click)="confirmar(id)">Confirmar</button>
-  <button type="button" class="btn btn-danger" (click)="cancelar(id)">Cancelar</button>
-</div>
+
+  <div class="row">
+    <div class="col-10 ">
+      <h5>PERUFARMA</h5>
+    </div>
+    <div class="col-2">
+      <button  class="close" style="cursor: pointer;" (click)="cerrarModal()">
+        <span class="material-icons">
+          close
+          </span>
+      </button>
+    </div>
+  </div>
+  <div [formGroup]="paymentElementForm">
+    <div class="row">
+      <div class="col pr-2">
+        <label class="mb-0"  style="color: rgb(83, 83, 83);">Nombre</label>
+        <input class="input"  formControlName="name" />
+      </div>
+      <div class="col pl-2">
+        <label class="mb-0"  style="color: rgb(83, 83, 83);">Apellido</label>
+        <input class="input"  formControlName="apellido"/>
+      </div>
+    </div>
+
+    <div class="row mt-2">
+      <div class="col">
+        <label class="mb-0" style="color: rgb(83, 83, 83);">Email</label>
+        <input class="input"  formControlName="email" />
+      </div>
+    </div>
+
+    <div style="margin-bottom: 10px"></div>
+    <ng-container *ngIf="elementsOptions?.clientSecret">
+      <ngx-stripe-payment
+        [appearance]="appearance"
+        [clientSecret]="elementsOptions?.clientSecret"
+      ></ngx-stripe-payment>
+    </ng-container>
+    <div style="margin-bottom: 15px"></div>
+    <mat-divider></mat-divider>
+    <div style="margin-bottom: 15px"></div>
+    <div style="text-align: right">
+
+      <button
+        style="font-size: 1.13rem; padding: .3rem; font-weight: 500;"
+        class="btn-block"
+        mat-raised-button
+        color="primary"
+        [disabled]="paying"
+        (click)="pay()"
+      >
+        <span *ngIf="!paying">
+          Pagar <span *ngIf="amount">{{ amount | currency :'S/' }}</span>
+        </span>
+        <span *ngIf="paying">PROCESSING...</span>
+      </button>
+    </div>
+  </div>

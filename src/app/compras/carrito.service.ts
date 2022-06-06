@@ -61,7 +61,7 @@ export class  CarritoService {
 
   calcularGranTotal(){
     let granTotal = 0
-    this.compra.items.forEach( (item: ItemCompra) =>{
+    this.items.forEach( (item: ItemCompra) =>{
       granTotal += item.cantidad*item.producto.precio
     })
     return granTotal;

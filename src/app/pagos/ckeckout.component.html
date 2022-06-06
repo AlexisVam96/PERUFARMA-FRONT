@@ -11,25 +11,25 @@
   <div class="d-block d-lg-none " style=" top:0px; position: sticky; width: 100%; z-index: 5;">
     <mat-accordion>
     <mat-expansion-panel (opened)="panelOpenState = true"
-                         (closed)="panelOpenState = false">
+                         (closed)="panelOpenState = false" class="rounded-0" style="box-shadow: none; border: 1px solid #f3f3f3;">
       <mat-expansion-panel-header>
         <mat-panel-title>
           Resumen de compra
         </mat-panel-title>
       </mat-expansion-panel-header >
-      <div class="container section-product">
+      <div class="container section-product scroll" style="border-top: 1px solid #f3f3f3;">
         <div class="row py-2" style="border-bottom: 1px solid #dee2e6!important; padding-bottom: 14px;"  *ngFor="let item of carritoService.items">
           <div class="col-10">
             <div class="row" >
               <div class="col-3 p-0 d-flex justify-content-center">
                 <div class="d-flex justify-content-center align-items-center" style="height: 60px; width: 60px;">
                   <img class="img-fluid" *ngIf="item.producto?.imagen" src="{{urlBackend}}/api/uploads/img/{{item.producto.imagen}}" >
-                  <img class="img-fluid" *ngIf="!item.producto?.imagen" src="{{urlBackend}}/api/images/not-image-cuadrado.png">
+                  <img class="img-fluid" *ngIf="!item.producto?.imagen" src="{{urlBackend}}/images/not-image-cuadrado.png">
                 </div>
               </div>
               <div class="col-9">
-                <p class="mb-1">{{item.producto.nombre}}</p>
-                <span class="text-muted" style="font-size: x-small; font-weight: 500;">{{item.producto.descripcion}}</span>
+                <p class="mb-1" style="font-size: 0.8654rem;">{{item.producto.nombre}}</p>
+                <span class="text-muted" style="font-size: 0.778rem; font-weight: 500;">{{item.producto.descripcion}}</span>
                 <p class="text-left text-muted" style="font-weight: 500;">CANTIDAD: {{item.cantidad}}</p>
               </div>
             </div>
@@ -181,7 +181,14 @@
                     <ngx-stripe-card
                       [options]="options"
                       [elementsOptions]="elementsOptions"
-                    ></ngx-stripe-card>
+                    >
+
+
+                  </ngx-stripe-card>
+
+
+
+
 
                 </div>
             </div>
@@ -201,9 +208,9 @@
                 <div class="dropdown-divider"></div>
                 <div class="row">
                   <div class="col-md-5 offset-md-7">
-                    <button *ngIf="checkPaypal" class="btn btn-block btn-success "  [disabled]="facturaForm.form.invalid || !(carritoService.items.length>0)" 
-                      (click)="createToken()">Finalizar Compra</button>
-                    <button *ngIf="check" class="btn btn-block btn-success "  [disabled]="facturaForm.form.invalid || !(carritoService.items.length>0)" 
+                    <button *ngIf="checkPaypal" class="btn btn-block btn-success "  [disabled]="!checkPaypal || facturaForm.form.invalid || !(carritoService.items.length>0)"
+                      (click)="payModal()">Finalizar Compra</button>
+                    <button *ngIf="check" class="btn btn-block btn-success "  [disabled]="facturaForm.form.invalid || !(carritoService.items.length>0) || check"
                       (click)="create()">Finalizar Compra</button>
                   </div>
               </div>
@@ -227,7 +234,7 @@
                     <h5 class="card-text">Resumen del pedido</h5>
                   </div>
                   <div class="card-body p-0" >
-                    <div class="card-body py-0" style="max-height: 150px; overflow: scroll; overflow-x: hidden;">
+                    <div class="card-body py-0 scroll" style="max-height: 150px; overflow: scroll; overflow-x: hidden;">
                       <div class="row mt-2 " style="font-size: small;"  *ngFor="let item of carritoService.items">
                         <div class="col-8" >
                           <div class="row" >
@@ -248,7 +255,7 @@
                       </div>
                     </div>
 
-                    <div class="dropdown-divider"></div>
+                    <div class="dropdown-divider my-0"></div>
                     <div class="card-body py-0 row mt-2" style="font-weight: 500;">
                       <div class="col-sm">
                         <p class="mb-2">Subtotal:</p>

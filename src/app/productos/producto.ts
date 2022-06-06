@@ -1,5 +1,6 @@
 
 import {Categoria} from '../categoria/categoria'
+import { Presentacion } from '../presentacion/presentacion';
 import { Usuario } from '../usuarios/usuario';
 
 export class Producto {
@@ -12,6 +13,6 @@ export class Producto {
   categoria: Categoria;
   usuario: Usuario;
 
-
+  presentaciones: Presentacion[]
 
 }

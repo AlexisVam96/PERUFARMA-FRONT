@@ -20,6 +20,7 @@ import {
 import { PaymentService } from '../services/stripe.service';
 import { Payment} from '../payment/payment'
 import Swal from 'sweetalert2';
+import { PaymentComponent } from '../payment/payment.component';
 
 
 declare var paypal;
@@ -44,6 +45,10 @@ export class CkeckoutComponent implements OnInit , AfterViewChecked{
 
   isOn:boolean=true;
 
+  get subtotal(): number{
+    return this.carritoService.calcularGranTotal() ;
+  }
+
   constructor( public carritoService: CarritoService,
     private comprasService: ComprasService,
     private router: Router,
@@ -59,13 +64,11 @@ export class CkeckoutComponent implements OnInit , AfterViewChecked{
   cardOptions: StripeCardElementOptions = {
     style: {
       base: {
-        padding: '2rem',
-        lineHeight: '60px',
-        iconColor: '#f2f2f2',
-        color: '#f1f1f1',
+        iconColor: '#666EE8',
+        color: '#31325F',
         fontWeight: '300',
         fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-        fontSize: '1.2rem',
+        fontSize: '18px',
         '::placeholder': {
           color: '#CFD7E0'
         }
@@ -73,23 +76,10 @@ export class CkeckoutComponent implements OnInit , AfterViewChecked{
     }
   }
 
-  options: StripeElementsOptions = {
-    appearance: {
-      theme : 'stripe',
-      variables: {
-        colorPrimary: '#0570de',
-        colorBackground: '#ffffff',
-        colorText: '#30313d',
-        colorDanger: '#df1b41',
-        fontFamily: 'Ideal Sans, system-ui, sans-serif',
-        spacingUnit: '2px',
-        borderRadius: '4px',
-        // See all possible variables below
-      }
-    }
-  }
+  elementsOptions: StripeElementsOptions = {
+    locale: 'es',
+  };
 
-  elementsOptions = this.stripeService.elements(this.options)
 
   ngOnInit(): void {
 
@@ -210,9 +200,6 @@ export class CkeckoutComponent implements OnInit , AfterViewChecked{
     })
   }
 
-  get subtotal(): number{
-    return this.carritoService.calcularGranTotal() ;
-  }
 
   create(): void{
       console.log(this.compra)
@@ -223,6 +210,26 @@ export class CkeckoutComponent implements OnInit , AfterViewChecked{
           this.carritoService.carNew();
           this.router.navigate(['/productos']);
         })
+  }
+
+  payModal(){
+    let dialogRef;
+
+    console.log(screen.width)
+
+    if(screen.width < 450){
+      dialogRef= this.dialog.open(PaymentComponent,{
+        maxWidth: '100vw',
+        width: '100vw',
+        height: '100%',
+        panelClass: 'map-modal'
+      })
+    }else{
+      dialogRef= this.dialog.open(PaymentComponent,{
+        width: '386px',
+        panelClass: 'map-modal'
+      })
+    }
   }
 
 

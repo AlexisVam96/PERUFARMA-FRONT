@@ -3,6 +3,7 @@ import { CarritoService} from '../carrito.service';
 import { ItemCompra } from '../models/item-compra';
 import { URL_BACKEND } from 'src/app/config/config';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { Presentacion } from 'src/app/presentacion/presentacion';
 
 @Component({
   selector: 'app-listar-carrito',
@@ -19,6 +20,7 @@ export class ListarCarritoComponent implements OnInit {
     ) {}
 
   ngOnInit(): void {
+    console.log(this.carritoService.items)
   }
 
 
@@ -29,6 +31,13 @@ export class ListarCarritoComponent implements OnInit {
     });
   }
 
+  comprararPresentacion(o1: Presentacion, o2: Presentacion): boolean{
+    if( o1 === undefined && o2 === undefined){
+      return true;
+    }
+    return o1===null || o2===null || o1===undefined || o2===undefined ? false : o1.id===o2.id;
+
+  }
 
 }
 

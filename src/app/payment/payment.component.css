@@ -1,0 +1,7 @@
+.close :hover{
+  background-color: #f3f3f3;
+  border-radius: 50%!important;
+  transition: .3s;
+}
+
+
