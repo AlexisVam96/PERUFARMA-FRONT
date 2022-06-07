@@ -10,9 +10,7 @@ import { AuthService} from '../auth.service';
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
 
-
   constructor(private authService: AuthService){
-
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler):
@@ -20,12 +18,10 @@ export class TokenInterceptor implements HttpInterceptor {
 
        let token = this.authService.token;
        if(token!= null){
-
         const authReq = req.clone({
           headers: req.headers.set('Authorization', 'Bearer ' + token)
         });
         console.log('tokenInterceptor => Bearer ' + token )
-
         return next.handle(authReq);
        }
 
